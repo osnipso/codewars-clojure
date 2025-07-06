@@ -3,7 +3,8 @@
 ;;
 ;; Problem: Sum of Even Numbers in a Sequence
 ;;
-;; Task: Given a sequence of positive integers, calculate the sum of all even numbers within the sequence.
+;; Task: Given a sequence of positive integers, calculate the sum of all even numbers within the
+;;       sequence.
 ;;
 ;; Examples:
 ;;
