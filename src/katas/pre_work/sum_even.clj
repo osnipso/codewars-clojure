@@ -1,5 +1,3 @@
-(ns pre-work.sum-even)
-
 ;;
 ;; Problem: Sum of Even Numbers in a Sequence
 ;;
@@ -20,19 +18,23 @@
 ;; - The numbers in the sequence will not exceed the maximum value for a standard integer type.
 ;;
 
-;; Solution 1: "Standard" recursion
-(defn sum-even
+(ns katas.pre-work.sum-even)
+
+;; --- Solution 1: "Standard" recursion ---
+
+(defn sum-even-solution-1
   [in-seq]
   (if (empty? in-seq)
     0  ;; End recursion
     (let [first-element (first in-seq)
           seq-rest (rest in-seq)]
       (if (even? first-element)
-        (+ first-element (sum-even seq-rest))
-        (sum-even seq-rest)))))
+        (+ first-element (sum-even-solution-1 seq-rest))
+        (sum-even-solution-1 seq-rest)))))
 
-;; Solution 2: Idiomatic recursion (avoid stack overflow)
-(defn sum-even
+;; --- Solution 2: Idiomatic recursion (avoid stack overflow) ---
+
+(defn sum-even-solution-2
   [in-seq]
   (loop [sum 0
          seq in-seq]
@@ -44,7 +46,12 @@
           (recur (+ sum first-element) seq-rest)
           (recur sum seq-rest))))))
 
-;; Solution 3: Idiomatic simple (uses high-order functions)
-(defn sum-even
+;; --- Solution 3: Idiomatic simple (uses high-order functions) ---
+
+(defn sum-even-solution-3
   [in-seq]
   (reduce + (filter even? in-seq)))
+
+;; --- Active solution (the one tests run against) ---
+
+(def sum-even-solution sum-even-solution-1)
